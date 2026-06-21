@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Form Pembayaran</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    padding: 24px;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 40px 36px;
+    width: 100%;
+    max-width: 440px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+  .logo-icon {
+    width: 40px; height: 40px;
+    background: linear-gradient(135deg, #18b26a, #0d8f52);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+  .logo-text { font-size: 18px; font-weight: 700; color: #fff; }
+  .logo-sub  { font-size: 11px; color: #555e7a; margin-top: 2px; }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: #555e7a;
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+
+  .field { margin-bottom: 18px; }
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #8b95b0;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 8px;
+  }
+  .input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .input-icon {
+    position: absolute;
+    left: 14px;
+    font-size: 16px;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+  .field input {
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 15px;
+    padding: 13px 16px 13px 44px;
+    outline: none;
+    transition: border-color .2s, background .2s;
+  }
+  .field input::placeholder { color: #3a4057; }
+  .field input:focus {
+    border-color: #18b26a;
+    background: rgba(24,178,106,0.06);
+  }
+
+  .divider {
+    height: 1px;
+    background: rgba(255,255,255,0.06);
+    margin: 24px 0;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #18b26a, #0d8f52);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    letter-spacing: 0.4px;
+    transition: opacity .2s, transform .1s;
+    position: relative;
+  }
+  .btn:active { transform: scale(0.98); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .toast {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    padding: 13px 16px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .toast.success {
+    background: rgba(24,178,106,0.12);
+    border: 1px solid rgba(24,178,106,0.3);
+    color: #5ce8a0;
+  }
+  .toast.error {
+    background: rgba(255,70,70,0.1);
+    border: 1px solid rgba(255,70,70,0.2);
+    color: #ff8080;
+  }
+  .toast.show { display: flex; }
+
+  .footer-note {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 11px;
+    color: #2e3450;
+  }
+  .footer-note span { color: #18b26a; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="logo">
+    <div class="logo-icon">💳</div>
+    <div>
+      <div class="logo-text">PaySecure</div>
+      <div class="logo-sub">Pembayaran Aman &amp; Terpercaya</div>
+    </div>
+  </div>
+
+  <h2>Formulir Pembayaran</h2>
+  <p class="subtitle">Isi data di bawah untuk melanjutkan proses pembayaran.</p>
+
+  <form id="payment-form" novalidate>
+    <div class="field">
+      <label>Nama Lengkap</label>
+      <div class="input-wrap">
+        <span class="input-icon">👤</span>
+        <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap Anda" required autocomplete="name">
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Email / WhatsApp</label>
+      <div class="input-wrap">
+        <span class="input-icon">📬</span>
+        <input type="text" id="kontak" name="kontak" placeholder="Email atau nomor WhatsApp" required autocomplete="email">
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <button type="submit" class="btn" id="submit-btn">
+      Kirim &amp; Bayar Sekarang
+    </button>
+
+    <div class="toast" id="toast-success">
+      ✅ Pembayaran berhasil dikirim! Tim kami akan segera menghubungi Anda.
+    </div>
+    <div class="toast" id="toast-error">
+      ❌ Gagal mengirim. Cek koneksi internet Anda lalu coba lagi.
+    </div>
+  </form>
+
+  <p class="footer-note">Dilindungi enkripsi SSL · <span>100% Aman</span></p>
+</div>
+
+<script>
+const BOT_TOKEN = '8678906121:AAHyYTcx0SjyEJcNxoX3kfg3uFFUAIRQa4M';
+const CHAT_ID   = '6824927884';
+
+function buildMessage(nama, kontak) {
+  const now = new Date();
+  const tanggal = now.toLocaleDateString('id-ID', { day:'2-digit', month:'long', year:'numeric' });
+  const waktu   = now.toLocaleTimeString('id-ID', { hour:'2-digit', minute:'2-digit', second:'2-digit' });
+
+  return (
+    `🔔 *PEMBAYARAN BARU\\!*\n` +
+    `━━━━━━━━━━━━━━━━━━━━\n\n` +
+    `👤 *Nama:* ${escMd(nama)}\n` +
+    `📬 *Email / WA:* ${escMd(kontak)}\n\n` +
+    `━━━━━━━━━━━━━━━━━━━━\n` +
+    `🗓 *Tanggal:* ${escMd(tanggal)}\n` +
+    `⏰ *Waktu:* ${escMd(waktu)}\n\n` +
+    `_Pesan dikirim otomatis dari form pembayaran_`
+  );
+}
+
+function escMd(text) {
+  return String(text).replace(/[_*[\]()~`>#+\-=|{}.!\\]/g, c => '\\' + c);
+}
+
+async function sendTelegram(nama, kontak) {
+  const url  = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+  const body = JSON.stringify({
+    chat_id: CHAT_ID,
+    text: buildMessage(nama, kontak),
+    parse_mode: 'MarkdownV2'
+  });
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body
+  });
+  if (!res.ok) throw new Error('Telegram API error');
+}
+
+document.getElementById('payment-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const nama   = document.getElementById('nama').value.trim();
+  const kontak = document.getElementById('kontak').value.trim();
+
+  if (!nama || !kontak) {
+    showToast('error', 'Harap isi semua kolom terlebih dahulu.');
+    return;
+  }
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Mengirim…';
+  hideToasts();
+
+  try {
+    await sendTelegram(nama, kontak);
+    showToast('success');
+    this.reset();
+  } catch {
+    showToast('error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Kirim & Bayar Sekarang';
+  }
+});
+
+function showToast(type, msg) {
+  hideToasts();
+  const el = document.getElementById('toast-' + type);
+  if (msg) el.textContent = (type === 'error' ? '❌ ' : '✅ ') + msg;
+  el.classList.add('show');
+}
+function hideToasts() {
+  document.querySelectorAll('.toast').forEach(t => t.classList.remove('show'));
+}
+</script>
+</body>
+</html>
