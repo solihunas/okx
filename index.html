@@ -1,280 +1,390 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Form Pembayaran</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>OKX Spot — OHLC</title>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+:root {
+  --bg:     #0b0e11;
+  --panel:  #131720;
+  --card:   #1a1f2e;
+  --border: #252b3b;
+  --muted:  #2e3650;
+  --text:   #d1d5e0;
+  --dim:    #5c6480;
+  --bright: #eef0f7;
+  --green:  #00c076;
+  --red:    #ff3b5c;
+  --blue:   #3d7eff;
+  --mono:   'JetBrains Mono', monospace;
+  --sans:   'Inter', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; }
+body { background: var(--bg); color: var(--text); font-family: var(--sans); display: flex; flex-direction: column; height: 100vh; }
 
-  body {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    padding: 24px;
-  }
+/* TOPBAR */
+.topbar { display: flex; align-items: center; gap: 10px; padding: 0 14px; height: 48px; background: var(--panel); border-bottom: 1px solid var(--border); flex-shrink: 0; }
+.brand { display: flex; align-items: center; gap: 7px; flex-shrink: 0; }
+.brand-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 6px var(--blue); }
+.brand-name { font-size: 13px; font-weight: 600; color: var(--bright); letter-spacing: 0.5px; }
+.search-wrap { flex: 1; max-width: 240px; position: relative; }
+.search-wrap input { width: 100%; background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px 6px 28px; font-size: 12px; font-family: var(--mono); color: var(--text); outline: none; transition: border-color .15s; }
+.search-wrap input:focus { border-color: var(--blue); }
+.search-wrap input::placeholder { color: var(--dim); }
+.s-icon { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); color: var(--dim); font-size: 12px; pointer-events: none; }
+.ftabs { display: flex; gap: 2px; flex-shrink: 0; }
+.ftab { padding: 4px 9px; font-size: 11px; font-weight: 500; border-radius: 4px; cursor: pointer; color: var(--dim); transition: background .15s, color .15s; white-space: nowrap; }
+.ftab:hover { color: var(--text); }
+.ftab.active { background: var(--blue); color: #fff; }
+.live { margin-left: auto; display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+.live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: blink 2s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+.live-txt { font-size: 10px; font-family: var(--mono); color: var(--dim); }
 
-  .card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 20px;
-    padding: 40px 36px;
-    width: 100%;
-    max-width: 440px;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 24px 64px rgba(0,0,0,0.5);
-  }
+/* LAYOUT */
+.layout { display: flex; flex: 1; overflow: hidden; }
 
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 32px;
-  }
-  .logo-icon {
-    width: 40px; height: 40px;
-    background: linear-gradient(135deg, #18b26a, #0d8f52);
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-  }
-  .logo-text { font-size: 18px; font-weight: 700; color: #fff; }
-  .logo-sub  { font-size: 11px; color: #555e7a; margin-top: 2px; }
+/* SIDEBAR */
+.sidebar { width: 195px; flex-shrink: 0; background: var(--panel); border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; }
+.sb-head { padding: 7px 12px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+.sb-label { font-size: 10px; font-family: var(--mono); color: var(--dim); text-transform: uppercase; letter-spacing: .8px; }
+.sb-count { font-size: 10px; font-family: var(--mono); color: var(--muted); }
+.pair-list { flex: 1; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--muted) transparent; }
+.pi { display: flex; align-items: center; justify-content: space-between; padding: 7px 12px; cursor: pointer; border-bottom: 1px solid #0d1018; transition: background .1s; }
+.pi:hover { background: var(--card); }
+.pi.active { background: #1c2540; border-left: 2px solid var(--blue); padding-left: 10px; }
+.pi-name { font-size: 12px; font-weight: 500; font-family: var(--mono); color: var(--bright); }
+.pi-quote { font-size: 10px; color: var(--dim); margin-top: 1px; }
+.pi-r { text-align: right; }
+.pi-price { font-size: 11px; font-family: var(--mono); color: var(--text); }
+.pi-chg { font-size: 10px; font-family: var(--mono); margin-top: 1px; }
+.up { color: var(--green); }
+.dn { color: var(--red); }
+.fl { color: var(--dim); }
 
-  h2 {
-    font-size: 22px;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 6px;
-  }
-  .subtitle {
-    font-size: 13px;
-    color: #555e7a;
-    margin-bottom: 28px;
-    line-height: 1.5;
-  }
+/* MAIN */
+.main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
 
-  .field { margin-bottom: 18px; }
-  .field label {
-    display: block;
-    font-size: 12px;
-    font-weight: 600;
-    color: #8b95b0;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    margin-bottom: 8px;
-  }
-  .input-wrap {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-  .input-icon {
-    position: absolute;
-    left: 14px;
-    font-size: 16px;
-    pointer-events: none;
-    opacity: 0.6;
-  }
-  .field input {
-    width: 100%;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 12px;
-    color: #fff;
-    font-size: 15px;
-    padding: 13px 16px 13px 44px;
-    outline: none;
-    transition: border-color .2s, background .2s;
-  }
-  .field input::placeholder { color: #3a4057; }
-  .field input:focus {
-    border-color: #18b26a;
-    background: rgba(24,178,106,0.06);
-  }
+/* PAIR HEADER */
+.ph { padding: 9px 14px; background: var(--panel); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 18px; flex-shrink: 0; flex-wrap: wrap; }
+.ph-pair { font-size: 15px; font-weight: 600; font-family: var(--mono); color: var(--bright); }
+.ph-price { font-size: 17px; font-weight: 600; font-family: var(--mono); }
+.ph-stat { display: flex; flex-direction: column; }
+.ph-lbl { font-size: 9px; text-transform: uppercase; letter-spacing: .5px; color: var(--dim); font-family: var(--mono); }
+.ph-val { font-size: 12px; font-family: var(--mono); color: var(--text); }
 
-  .divider {
-    height: 1px;
-    background: rgba(255,255,255,0.06);
-    margin: 24px 0;
-  }
+/* TF BAR */
+.tf-bar { padding: 6px 14px; background: var(--panel); border-bottom: 1px solid var(--border); display: flex; gap: 3px; flex-shrink: 0; align-items: center; }
+.tf-btn { padding: 3px 9px; font-size: 11px; font-family: var(--mono); font-weight: 500; border-radius: 4px; cursor: pointer; color: var(--dim); background: none; border: none; transition: background .12s, color .12s; }
+.tf-btn:hover { color: var(--text); background: var(--card); }
+.tf-btn.active { background: var(--blue); color: #fff; }
+.rf-btn { margin-left: auto; padding: 3px 10px; font-size: 11px; font-family: var(--mono); border-radius: 4px; cursor: pointer; color: var(--dim); background: none; border: 1px solid var(--border); transition: border-color .12s, color .12s; white-space: nowrap; }
+.rf-btn:hover { border-color: var(--blue); color: var(--blue); }
 
-  .btn {
-    width: 100%;
-    padding: 15px;
-    background: linear-gradient(135deg, #18b26a, #0d8f52);
-    color: #fff;
-    font-size: 15px;
-    font-weight: 700;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    letter-spacing: 0.4px;
-    transition: opacity .2s, transform .1s;
-    position: relative;
-  }
-  .btn:active { transform: scale(0.98); }
-  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+/* COUNTDOWN */
+.cbar { height: 2px; background: var(--border); flex-shrink: 0; }
+.cbar-fill { height: 100%; background: var(--blue); width: 100%; transform-origin: left; }
 
-  .toast {
-    display: none;
-    align-items: center;
-    gap: 10px;
-    margin-top: 16px;
-    padding: 13px 16px;
-    border-radius: 12px;
-    font-size: 13px;
-    font-weight: 500;
-  }
-  .toast.success {
-    background: rgba(24,178,106,0.12);
-    border: 1px solid rgba(24,178,106,0.3);
-    color: #5ce8a0;
-  }
-  .toast.error {
-    background: rgba(255,70,70,0.1);
-    border: 1px solid rgba(255,70,70,0.2);
-    color: #ff8080;
-  }
-  .toast.show { display: flex; }
+/* TABLE AREA */
+.tarea { flex: 1; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--muted) transparent; }
 
-  .footer-note {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 11px;
-    color: #2e3450;
-  }
-  .footer-note span { color: #18b26a; }
+/* STATE */
+.sbox { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px 20px; gap: 12px; color: var(--dim); font-family: var(--mono); font-size: 13px; }
+.spin { width: 22px; height: 22px; border: 2px solid var(--border); border-top-color: var(--blue); border-radius: 50%; animation: spin .7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* OHLC TABLE */
+table { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 12px; }
+thead th { position: sticky; top: 0; z-index: 5; background: #0d1018; color: var(--dim); font-size: 10px; text-transform: uppercase; letter-spacing: .8px; padding: 8px 13px; text-align: right; border-bottom: 1px solid var(--border); font-weight: 600; white-space: nowrap; }
+thead th:first-child { text-align: left; }
+tbody tr { border-bottom: 1px solid #10141c; transition: background .08s; }
+tbody tr:hover { background: #13181f; }
+tbody tr.nw { background: #151c2a; }
+tbody td { padding: 6px 13px; text-align: right; white-space: nowrap; }
+tbody td:first-child { text-align: left; color: var(--dim); font-size: 11px; }
+.cb { color: var(--green); }
+.cr { color: var(--red); }
+.cn { color: var(--text); }
+.vw { display: flex; align-items: center; justify-content: flex-end; gap: 5px; }
+.vb { height: 5px; background: #2e3650; border-radius: 2px; min-width: 2px; }
+
+/* MOBILE */
+@media (max-width: 560px) {
+  .sidebar { width: 125px; }
+  .pi-r { display: none; }
+  .ftabs { display: none; }
+  .search-wrap { max-width: 110px; }
+  .ph { gap: 8px; padding: 7px 9px; }
+  .ph-price { font-size: 14px; }
+  .tf-bar { padding: 5px 7px; }
+  .tf-btn { padding: 3px 5px; font-size: 10px; }
+  thead th, tbody td { padding: 5px 7px; font-size: 11px; }
+}
 </style>
 </head>
 <body>
 
-<div class="card">
-  <div class="logo">
-    <div class="logo-icon">💳</div>
-    <div>
-      <div class="logo-text">PaySecure</div>
-      <div class="logo-sub">Pembayaran Aman &amp; Terpercaya</div>
+<div class="topbar">
+  <div class="brand">
+    <div class="brand-dot"></div>
+    <span class="brand-name">OKX SPOT</span>
+  </div>
+  <div class="search-wrap">
+    <span class="s-icon">⌕</span>
+    <input id="srch" type="text" placeholder="Cari pair…" autocomplete="off">
+  </div>
+  <div class="ftabs" id="ftabs">
+    <div class="ftab active" data-q="ALL">All</div>
+    <div class="ftab" data-q="USDT">USDT</div>
+    <div class="ftab" data-q="USDC">USDC</div>
+    <div class="ftab" data-q="BTC">BTC</div>
+    <div class="ftab" data-q="ETH">ETH</div>
+  </div>
+  <div class="live">
+    <div class="live-dot" id="ldot"></div>
+    <span class="live-txt" id="ltxt">Loading…</span>
+  </div>
+</div>
+
+<div class="layout">
+  <div class="sidebar">
+    <div class="sb-head">
+      <span class="sb-label">Pairs</span>
+      <span class="sb-count" id="pcount">—</span>
+    </div>
+    <div class="pair-list" id="plist">
+      <div class="sbox"><div class="spin"></div><span>Loading…</span></div>
     </div>
   </div>
 
-  <h2>Formulir Pembayaran</h2>
-  <p class="subtitle">Isi data di bawah untuk melanjutkan proses pembayaran.</p>
-
-  <form id="payment-form" novalidate>
-    <div class="field">
-      <label>Nama Lengkap</label>
-      <div class="input-wrap">
-        <span class="input-icon">👤</span>
-        <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap Anda" required autocomplete="name">
-      </div>
+  <div class="main">
+    <div class="ph">
+      <span class="ph-pair" id="phPair">Pilih pair</span>
+      <span class="ph-price" id="phPrice"></span>
+      <div class="ph-stat"><span class="ph-lbl">24h Chg</span><span class="ph-val" id="phChg">—</span></div>
+      <div class="ph-stat"><span class="ph-lbl">24h High</span><span class="ph-val" id="phHigh">—</span></div>
+      <div class="ph-stat"><span class="ph-lbl">24h Low</span><span class="ph-val" id="phLow">—</span></div>
+      <div class="ph-stat"><span class="ph-lbl">24h Vol</span><span class="ph-val" id="phVol">—</span></div>
+      <div class="ph-stat"><span class="ph-lbl">Candles</span><span class="ph-val" id="phCnt">—</span></div>
     </div>
 
-    <div class="field">
-      <label>Email / WhatsApp</label>
-      <div class="input-wrap">
-        <span class="input-icon">📬</span>
-        <input type="text" id="kontak" name="kontak" placeholder="Email atau nomor WhatsApp" required autocomplete="email">
-      </div>
+    <div class="tf-bar">
+      <button class="tf-btn" data-tf="1m">1m</button>
+      <button class="tf-btn" data-tf="5m">5m</button>
+      <button class="tf-btn active" data-tf="15m">15m</button>
+      <button class="tf-btn" data-tf="1H">1H</button>
+      <button class="tf-btn active-h4" data-tf="4H">4H</button>
+      <button class="tf-btn" data-tf="1D">1D</button>
+      <button class="tf-btn" data-tf="1W">1W</button>
+      <button class="rf-btn" id="rfBtn">⟳ 15s</button>
     </div>
 
-    <div class="divider"></div>
+    <div class="cbar"><div class="cbar-fill" id="cbarFill"></div></div>
 
-    <button type="submit" class="btn" id="submit-btn">
-      Kirim &amp; Bayar Sekarang
-    </button>
-
-    <div class="toast" id="toast-success">
-      ✅ Pembayaran berhasil dikirim! Tim kami akan segera menghubungi Anda.
+    <div class="tarea" id="tarea">
+      <div class="sbox"><span style="font-size:28px;opacity:.3">📋</span><span>Pilih pair dari kiri</span></div>
     </div>
-    <div class="toast" id="toast-error">
-      ❌ Gagal mengirim. Cek koneksi internet Anda lalu coba lagi.
-    </div>
-  </form>
-
-  <p class="footer-note">Dilindungi enkripsi SSL · <span>100% Aman</span></p>
+  </div>
 </div>
 
 <script>
-const BOT_TOKEN = '8678906121:AAHyYTcx0SjyEJcNxoX3kfg3uFFUAIRQa4M';
-const CHAT_ID   = '6824927884';
+const BASE  = 'https://www.okx.com/api/v5';
+const LIMIT = 300;
+const T_TICK  = 5000;
+const T_OHLC  = 15000;
 
-function buildMessage(nama, kontak) {
-  const now = new Date();
-  const tanggal = now.toLocaleDateString('id-ID', { day:'2-digit', month:'long', year:'numeric' });
-  const waktu   = now.toLocaleTimeString('id-ID', { hour:'2-digit', minute:'2-digit', second:'2-digit' });
+let tickers  = [];
+let filtered = [];
+let qFilter  = 'ALL';
+let qSearch  = '';
+let pair     = null;
+let tf       = '15m';
+let ohlcTO   = null;
+let cdTO     = null;
 
-  return (
-    `🔔 *PEMBAYARAN BARU\\!*\n` +
-    `━━━━━━━━━━━━━━━━━━━━\n\n` +
-    `👤 *Nama:* ${escMd(nama)}\n` +
-    `📬 *Email / WA:* ${escMd(kontak)}\n\n` +
-    `━━━━━━━━━━━━━━━━━━━━\n` +
-    `🗓 *Tanggal:* ${escMd(tanggal)}\n` +
-    `⏰ *Waktu:* ${escMd(waktu)}\n\n` +
-    `_Pesan dikirim otomatis dari form pembayaran_`
-  );
+function fp(v) {
+  const n = parseFloat(v);
+  if (n >= 10000) return n.toLocaleString('en-US', {maximumFractionDigits:2});
+  if (n >= 1)     return n.toFixed(4);
+  if (n >= .001)  return n.toFixed(6);
+  return n.toFixed(8);
+}
+function fv(v) {
+  const n = parseFloat(v);
+  if (n>=1e9) return (n/1e9).toFixed(2)+'B';
+  if (n>=1e6) return (n/1e6).toFixed(2)+'M';
+  if (n>=1e3) return (n/1e3).toFixed(2)+'K';
+  return n.toFixed(2);
+}
+function ft(ts) {
+  const d=new Date(parseInt(ts)), p=n=>String(n).padStart(2,'0');
+  return `${d.getUTCFullYear()}-${p(d.getUTCMonth()+1)}-${p(d.getUTCDate())} ${p(d.getUTCHours())}:${p(d.getUTCMinutes())}`;
+}
+function live(ok,txt) {
+  const d=document.getElementById('ldot');
+  d.style.background=ok?'var(--green)':'var(--red)';
+  d.style.animation=ok?'blink 2s infinite':'none';
+  document.getElementById('ltxt').textContent=txt;
 }
 
-function escMd(text) {
-  return String(text).replace(/[_*[\]()~`>#+\-=|{}.!\\]/g, c => '\\' + c);
+async function getTickers() {
+  const r=await fetch(`${BASE}/market/tickers?instType=SPOT`);
+  const j=await r.json();
+  if(j.code!=='0') throw new Error(j.msg);
+  return j.data;
 }
 
-async function sendTelegram(nama, kontak) {
-  const url  = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-  const body = JSON.stringify({
-    chat_id: CHAT_ID,
-    text: buildMessage(nama, kontak),
-    parse_mode: 'MarkdownV2'
-  });
-  const res = await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body
-  });
-  if (!res.ok) throw new Error('Telegram API error');
+async function getCandles(instId, bar) {
+  const r=await fetch(`${BASE}/market/candles?instId=${instId}&bar=${bar}&limit=${LIMIT}`);
+  const j=await r.json();
+  if(j.code!=='0') throw new Error(j.msg);
+  return j.data;
 }
 
-document.getElementById('payment-form').addEventListener('submit', async function(e) {
-  e.preventDefault();
+function doFilter() {
+  let l=tickers;
+  if(qFilter!=='ALL') l=l.filter(t=>t.instId.endsWith('-'+qFilter));
+  if(qSearch) { const q=qSearch.toUpperCase(); l=l.filter(t=>t.instId.toUpperCase().includes(q)); }
+  l=l.slice().sort((a,b)=>parseFloat(b.volCcy24h||b.vol24h)-parseFloat(a.volCcy24h||a.vol24h));
+  filtered=l;
+  document.getElementById('pcount').textContent=l.length;
+  renderList();
+}
 
-  const nama   = document.getElementById('nama').value.trim();
-  const kontak = document.getElementById('kontak').value.trim();
+function renderList() {
+  const el=document.getElementById('plist');
+  if(!filtered.length){el.innerHTML='<div class="sbox"><span>Tidak ada pair</span></div>';return;}
+  el.innerHTML=filtered.map(t=>{
+    const pct=(parseFloat(t.last)-parseFloat(t.open24h))/parseFloat(t.open24h)*100;
+    const sign=pct>=0?'+':'';
+    const cls=pct>.01?'up':pct<-.01?'dn':'fl';
+    const [base,quote]=t.instId.split('-');
+    return `<div class="pi${t.instId===pair?' active':''}" data-id="${t.instId}">
+      <div><div class="pi-name">${base}</div><div class="pi-quote">${quote}</div></div>
+      <div class="pi-r"><div class="pi-price">${fp(t.last)}</div><div class="pi-chg ${cls}">${sign}${pct.toFixed(2)}%</div></div>
+    </div>`;
+  }).join('');
+  el.querySelectorAll('.pi').forEach(e=>e.addEventListener('click',()=>selectPair(e.dataset.id)));
+}
 
-  if (!nama || !kontak) {
-    showToast('error', 'Harap isi semua kolom terlebih dahulu.');
-    return;
-  }
+function updateHeader() {
+  if(!pair) return;
+  const t=tickers.find(x=>x.instId===pair);
+  if(!t) return;
+  const price=parseFloat(t.last), open=parseFloat(t.open24h);
+  const chg=price-open, pct=chg/open*100, sign=pct>=0?'+':'';
+  document.getElementById('phPrice').textContent=fp(t.last);
+  document.getElementById('phPrice').className='ph-price '+(pct>.01?'cb':pct<-.01?'cr':'');
+  document.getElementById('phChg').textContent=`${sign}${chg.toFixed(4)} (${sign}${pct.toFixed(2)}%)`;
+  document.getElementById('phChg').style.color=pct>=0?'var(--green)':'var(--red)';
+  document.getElementById('phHigh').textContent=fp(t.high24h);
+  document.getElementById('phLow').textContent=fp(t.low24h);
+  document.getElementById('phVol').textContent=fv(t.volCcy24h||t.vol24h);
+}
 
-  const btn = document.getElementById('submit-btn');
-  btn.disabled = true;
-  btn.textContent = 'Mengirim…';
-  hideToasts();
+function renderOHLC(data) {
+  const area=document.getElementById('tarea');
+  if(!data||!data.length){area.innerHTML='<div class="sbox"><span>Tidak ada data</span></div>';return;}
+  document.getElementById('phCnt').textContent=data.length+' candles';
+  const vols=data.map(d=>parseFloat(d[5]));
+  const maxV=Math.max(...vols)||1;
+  const rows=data.map((d,i)=>{
+    const [ts,o,h,l,c,vol]=d;
+    const bull=parseFloat(c)>=parseFloat(o);
+    const dCls=bull?'cb':'cr';
+    const dir=bull?'▲':'▼';
+    const pct=(parseFloat(c)-parseFloat(o))/parseFloat(o)*100;
+    const sign=pct>=0?'+':'';
+    const bw=Math.max((parseFloat(vol)/maxV)*72,2).toFixed(1);
+    return `<tr${i===0?' class="nw"':''}>
+      <td>${ft(ts)}</td>
+      <td class="cn">${fp(o)}</td>
+      <td class="cb">${fp(h)}</td>
+      <td class="cr">${fp(l)}</td>
+      <td class="${dCls}">${dir} ${fp(c)}</td>
+      <td class="${dCls}">${sign}${pct.toFixed(2)}%</td>
+      <td><div class="vw"><span style="color:var(--dim)">${fv(vol)}</span><div class="vb" style="width:${bw}px"></div></div></td>
+    </tr>`;
+  }).join('');
+  area.innerHTML=`<table><thead><tr>
+    <th>Time (UTC)</th><th>Open</th><th>High</th><th>Low</th><th>Close</th><th>Chg%</th><th>Volume</th>
+  </tr></thead><tbody>${rows}</tbody></table>`;
+}
 
+async function loadOHLC(spinner=true) {
+  if(!pair) return;
+  if(spinner) document.getElementById('tarea').innerHTML=`<div class="sbox"><div class="spin"></div><span>Memuat ${pair} ${tf}…</span></div>`;
   try {
-    await sendTelegram(nama, kontak);
-    showToast('success');
-    this.reset();
-  } catch {
-    showToast('error');
-  } finally {
-    btn.disabled = false;
-    btn.textContent = 'Kirim & Bayar Sekarang';
+    const data=await getCandles(pair,tf);
+    renderOHLC(data);
+  } catch(e) {
+    document.getElementById('tarea').innerHTML=`<div class="sbox"><span style="color:var(--red)">Gagal: ${e.message}</span></div>`;
   }
+}
+
+function startCountdown() {
+  clearTimeout(ohlcTO); clearInterval(cdTO);
+  const fill=document.getElementById('cbarFill');
+  fill.style.transition='none'; fill.style.transform='scaleX(1)';
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    fill.style.transition=`transform ${T_OHLC}ms linear`;
+    fill.style.transform='scaleX(0)';
+  }));
+  let sec=T_OHLC/1000;
+  document.getElementById('rfBtn').textContent=`⟳ ${sec}s`;
+  cdTO=setInterval(()=>{ sec--; document.getElementById('rfBtn').textContent=`⟳ ${sec}s`; if(sec<=0)clearInterval(cdTO); },1000);
+  ohlcTO=setTimeout(async()=>{ await loadOHLC(false); startCountdown(); },T_OHLC);
+}
+
+async function selectPair(id) {
+  pair=id;
+  document.getElementById('phPair').textContent=id.replace('-',' / ');
+  updateHeader();
+  document.querySelectorAll('.pi').forEach(e=>e.classList.toggle('active',e.dataset.id===id));
+  await loadOHLC(true);
+  startCountdown();
+}
+
+async function refreshTickers() {
+  try {
+    tickers=await getTickers();
+    doFilter(); updateHeader();
+    live(true,'Live · '+tickers.length+' pairs');
+  } catch(e) { live(false,'Error'); }
+}
+
+// INIT
+(async()=>{
+  try {
+    tickers=await getTickers();
+    doFilter();
+    live(true,'Live · '+tickers.length+' pairs');
+    const btc=tickers.find(t=>t.instId==='BTC-USDT');
+    if(btc) selectPair('BTC-USDT');
+  } catch(e) {
+    live(false,'Gagal');
+    document.getElementById('plist').innerHTML=`<div class="sbox"><span style="color:var(--red)">${e.message}</span></div>`;
+  }
+  setInterval(refreshTickers,T_TICK);
+})();
+
+// EVENTS
+document.getElementById('srch').addEventListener('input',e=>{ qSearch=e.target.value.trim(); doFilter(); });
+
+document.getElementById('ftabs').addEventListener('click',e=>{
+  const t=e.target.closest('.ftab'); if(!t) return;
+  document.querySelectorAll('.ftab').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active'); qFilter=t.dataset.q; doFilter();
 });
 
-function showToast(type, msg) {
-  hideToasts();
-  const el = document.getElementById('toast-' + type);
-  if (msg) el.textContent = (type === 'error' ? '❌ ' : '✅ ') + msg;
-  el.classList.add('show');
-}
-function hideToasts() {
-  document.querySelectorAll('.toast').forEach(t => t.classList.remove('show'));
-}
+document.querySelector('.tf-bar').addEventListener('click',e=>{
+  const b=e.target.closest('.tf-btn');
+  if(b){ document.querySelectorAll('.tf-btn').forEach(x=>x.classList.remove('active')); b.classList.add('active'); tf=b.dataset.tf; if(pair){loadOHLC(true);startCountdown();} return; }
+  if(e.target.id==='rfBtn'){ clearTimeout(ohlcTO);clearInterval(cdTO);loadOHLC(true);startCountdown(); }
+});
 </script>
 </body>
 </html>
