@@ -1,10 +1,131 @@
 {
-  "updated": 0,
-  "note": "Data not yet generated. GitHub Actions will update this every 15 minutes.",
+  "updated": 1782215263720,
+  "note": "Static JSON updated every 15 min by GitHub Actions. No JavaScript needed.",
   "endpoints": {
     "tickers": "https://solihunas.github.io/okx/data/tickers.json",
     "candles": "https://solihunas.github.io/okx/data/candles/{instId}-{bar}.json",
-    "index":   "https://solihunas.github.io/okx/data/index.json"
+    "index": "https://solihunas.github.io/okx/data/index.json"
   },
-  "available_candles": {}
+  "available_candles": {
+    "BTC-USDT": [
+      "15m",
+      "4H"
+    ],
+    "ETH-USDT": [
+      "15m",
+      "4H"
+    ],
+    "USDC-USDT": [
+      "15m",
+      "4H"
+    ],
+    "SOL-USDT": [
+      "15m",
+      "4H"
+    ],
+    "HYPE-USDT": [
+      "15m",
+      "4H"
+    ],
+    "DOGE-USDT": [
+      "15m",
+      "4H"
+    ],
+    "XRP-USDT": [
+      "15m",
+      "4H"
+    ],
+    "USDG-USDT": [
+      "15m",
+      "4H"
+    ],
+    "OKB-USDT": [
+      "15m",
+      "4H"
+    ],
+    "ZEC-USDT": [
+      "15m",
+      "4H"
+    ],
+    "RE-USDT": [
+      "15m",
+      "4H"
+    ],
+    "WLD-USDT": [
+      "15m",
+      "4H"
+    ],
+    "SUI-USDT": [
+      "15m",
+      "4H"
+    ],
+    "TRX-USDT": [
+      "15m",
+      "4H"
+    ],
+    "BNB-USDT": [
+      "15m",
+      "4H"
+    ],
+    "IP-USDT": [
+      "15m",
+      "4H"
+    ],
+    "GRAM-USDT": [
+      "15m",
+      "4H"
+    ],
+    "XAUT-USDT": [
+      "15m",
+      "4H"
+    ],
+    "TRUMP-USDT": [
+      "15m",
+      "4H"
+    ],
+    "RESOLV-USDT": [
+      "15m",
+      "4H"
+    ],
+    "FIL-USDT": [
+      "15m",
+      "4H"
+    ],
+    "UNI-USDT": [
+      "15m",
+      "4H"
+    ],
+    "XLM-USDT": [
+      "15m",
+      "4H"
+    ],
+    "BICO-USDT": [
+      "15m",
+      "4H"
+    ],
+    "NEAR-USDT": [
+      "15m",
+      "4H"
+    ],
+    "LAYER-USDT": [
+      "15m",
+      "4H"
+    ],
+    "ADA-USDT": [
+      "15m",
+      "4H"
+    ],
+    "ALLO-USDT": [
+      "15m",
+      "4H"
+    ],
+    "PEPE-USDT": [
+      "15m",
+      "4H"
+    ],
+    "BCH-USDT": [
+      "15m",
+      "4H"
+    ]
+  }
 }
