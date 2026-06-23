@@ -118,4 +118,21 @@ index = {
 with open('data/index.json', 'w') as f:
     json.dump(index, f, indent=2)
 print('  ✓ data/index.json written.')
+
+# ── 6. Aggregate all candles into data/candles/all.json ──────────────────────
+print('Building data/candles/all.json…')
+all_candles = {}
+for fname in sorted(os.listdir('data/candles')):
+    if fname.endswith('.json') and fname != 'all.json':
+        key = fname[:-5]   # strip .json  →  e.g. "BTC-USDT-15m"
+        with open(f'data/candles/{fname}', 'r') as f:
+            all_candles[key] = json.load(f)
+
+aggregate = {
+    'generated': int(time.time() * 1000),
+    'pairs':     all_candles,
+}
+with open('data/candles/all.json', 'w') as f:
+    json.dump(aggregate, f)
+print(f'  ✓ all.json: {len(all_candles)} keys written.')
 print('Done.')
