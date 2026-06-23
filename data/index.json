@@ -1,0 +1,10 @@
+{
+  "updated": 0,
+  "note": "Data not yet generated. GitHub Actions will update this every 15 minutes.",
+  "endpoints": {
+    "tickers": "https://solihunas.github.io/okx/data/tickers.json",
+    "candles": "https://solihunas.github.io/okx/data/candles/{instId}-{bar}.json",
+    "index":   "https://solihunas.github.io/okx/data/index.json"
+  },
+  "available_candles": {}
+}
