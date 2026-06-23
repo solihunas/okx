@@ -356,6 +356,38 @@ async function refreshTickers() {
   } catch(e) { live(false,'Error'); }
 }
 
+// === JSON MODE ===
+const _jp = new URLSearchParams(location.search);
+const _jm = _jp.get('json');
+
+if (_jm) {
+  document.documentElement.innerHTML = '<body></body>';
+  (async()=>{
+    try {
+      let out;
+      if (_jm==='tickers') {
+        const r=await fetch(`${BASE}/market/tickers?instType=SPOT`);
+        const j=await r.json();
+        if(j.code!=='0') throw new Error(j.msg);
+        out=j.data.map(t=>({instId:t.instId,last:t.last,open24h:t.open24h,high24h:t.high24h,low24h:t.low24h,volCcy24h:t.volCcy24h,ts:t.ts}));
+      } else if (_jm==='candles') {
+        const instId=_jp.get('instId')||'BTC-USDT';
+        const bar=_jp.get('bar')||'15m';
+        const limit=Math.min(parseInt(_jp.get('limit'))||300,300);
+        const r=await fetch(`${BASE}/market/candles?instId=${encodeURIComponent(instId)}&bar=${encodeURIComponent(bar)}&limit=${limit}`);
+        const j=await r.json();
+        if(j.code!=='0') throw new Error(j.msg);
+        out=j.data.slice().reverse().map(c=>({t:+c[0],o:c[1],h:c[2],l:c[3],c:c[4],v:c[5]}));
+      } else {
+        out={error:'unknown json mode',hint:'?json=tickers or ?json=candles&instId=BTC-USDT&bar=15m&limit=300'};
+      }
+      document.body.innerText=JSON.stringify(out);
+    } catch(e) {
+      document.body.innerText=JSON.stringify({error:e.message});
+    }
+  })();
+} else {
+
 // INIT
 (async()=>{
   try {
@@ -385,6 +417,8 @@ document.querySelector('.tf-bar').addEventListener('click',e=>{
   if(b){ document.querySelectorAll('.tf-btn').forEach(x=>x.classList.remove('active')); b.classList.add('active'); tf=b.dataset.tf; if(pair){loadOHLC(true);startCountdown();} return; }
   if(e.target.id==='rfBtn'){ clearTimeout(ohlcTO);clearInterval(cdTO);loadOHLC(true);startCountdown(); }
 });
+
+} // end normal mode
 </script>
 </body>
 </html>
