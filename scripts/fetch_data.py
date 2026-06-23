@@ -50,25 +50,23 @@ with open('data/tickers.json', 'w') as f:
     json.dump(tickers, f)
 print(f'  ✓ {len(tickers)} tickers → data/tickers.json')
 
-# ── 2. Inject tickers into index.html (AI-readable without JS) ───────────────
+# ── 2. Inject tickers + noscript summary into index.html ─────────────────────
 print('Injecting snapshot into index.html…')
 with open('index.html', 'r', encoding='utf-8') as f:
     html = f.read()
 
 snapshot_json = json.dumps(tickers, separators=(',', ':'))
-replacement = (
+ticker_block = (
     '<!-- OKX:TICKERS:START -->\n'
     f'<script type="application/json" id="okx-tickers">{snapshot_json}</script>\n'
     '<!-- OKX:TICKERS:END -->'
 )
-html_new = re.sub(
+html = re.sub(
     r'<!-- OKX:TICKERS:START -->.*?<!-- OKX:TICKERS:END -->',
-    replacement,
+    ticker_block,
     html,
     flags=re.DOTALL
 )
-with open('index.html', 'w', encoding='utf-8') as f:
-    f.write(html_new)
 print(f'  ✓ Embedded {len(tickers)} tickers into index.html')
 
 # ── 3. Top USDT pairs by 24h volume ─────────────────────────────────────────
@@ -76,6 +74,51 @@ usdt = [t for t in tickers if t['instId'].endswith('-USDT')]
 usdt.sort(key=lambda t: float(t.get('volCcy24h') or 0), reverse=True)
 top_pairs = [t['instId'] for t in usdt[:TOP_N]]
 print(f'  Top {TOP_N}: {", ".join(top_pairs[:5])} …')
+
+# ── 3b. Inject noscript AI-readable summary ───────────────────────────────────
+import datetime as _dt
+ts_str = _dt.datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')
+lines = [
+    f'OKX Spot Market — Static Snapshot  (updated: {ts_str})',
+    '',
+    'Data endpoints (no JavaScript needed):',
+    '  Tickers : https://solihunas.github.io/okx/data/tickers.json',
+    '  Candles : https://solihunas.github.io/okx/data/candles/{{instId}}-{{bar}}.json',
+    '  All data: https://solihunas.github.io/okx/data/candles/all.json',
+    '  Index   : https://solihunas.github.io/okx/data/index.json',
+    '',
+    f'Top {TOP_N} USDT pairs by 24h volume:',
+    f'{"Pair":<18} {"Price":>14} {"24h%":>8} {"Vol24h(USDT)":>20}',
+    '-' * 64,
+]
+usdt_map = {t['instId']: t for t in usdt}
+for inst in top_pairs:
+    t = usdt_map[inst]
+    try:
+        price  = float(t['last'])
+        open_  = float(t['open24h'])
+        chg    = (price - open_) / open_ * 100 if open_ else 0
+        vol    = float(t.get('volCcy24h') or 0)
+        lines.append(f'{inst:<18} {price:>14.6g} {chg:>+7.2f}% {vol:>20,.0f}')
+    except Exception:
+        lines.append(inst)
+summary_text = '\n'.join(lines)
+noscript_replacement = (
+    '<!-- OKX:NOSCRIPT:START -->\n'
+    f'<noscript><pre id="okx-static-summary">\n{summary_text}\n</pre></noscript>\n'
+    '<!-- OKX:NOSCRIPT:END -->'
+)
+html = re.sub(
+    r'<!-- OKX:NOSCRIPT:START -->.*?<!-- OKX:NOSCRIPT:END -->',
+    noscript_replacement,
+    html,
+    flags=re.DOTALL
+)
+print('  ✓ Updated noscript summary in index.html')
+
+with open('index.html', 'w', encoding='utf-8') as f:
+    f.write(html)
+print('  ✓ index.html written')
 
 # ── 4. Candles for each top pair ─────────────────────────────────────────────
 available = {}

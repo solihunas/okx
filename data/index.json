@@ -1,5 +1,5 @@
 {
-  "updated": 1782215263720,
+  "updated": 1782217502299,
   "note": "Static JSON updated every 15 min by GitHub Actions. No JavaScript needed.",
   "endpoints": {
     "tickers": "https://solihunas.github.io/okx/data/tickers.json",
@@ -39,10 +39,6 @@
       "15m",
       "4H"
     ],
-    "OKB-USDT": [
-      "15m",
-      "4H"
-    ],
     "ZEC-USDT": [
       "15m",
       "4H"
@@ -56,6 +52,10 @@
       "4H"
     ],
     "SUI-USDT": [
+      "15m",
+      "4H"
+    ],
+    "OKB-USDT": [
       "15m",
       "4H"
     ],
@@ -79,11 +79,11 @@
       "15m",
       "4H"
     ],
-    "TRUMP-USDT": [
+    "RESOLV-USDT": [
       "15m",
       "4H"
     ],
-    "RESOLV-USDT": [
+    "TRUMP-USDT": [
       "15m",
       "4H"
     ],
@@ -107,11 +107,11 @@
       "15m",
       "4H"
     ],
-    "LAYER-USDT": [
+    "ADA-USDT": [
       "15m",
       "4H"
     ],
-    "ADA-USDT": [
+    "LAYER-USDT": [
       "15m",
       "4H"
     ],
