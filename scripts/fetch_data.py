@@ -12,8 +12,9 @@ import time
 import urllib.request
 
 BASE       = 'https://www.okx.com/api/v5'
-TOP_N      = 30
-TIMEFRAMES = ['15m', '4H']
+TOP_N      = 200          # ranks 11-210 (skip top 10 mega-caps/stables)
+RANK_START = 10           # 0-indexed → rank 11
+TIMEFRAMES = ['5m', '15m', '1H', '4H', '1D']
 LIMIT      = 300
 
 os.makedirs('data/candles', exist_ok=True)
@@ -72,8 +73,8 @@ print(f'  ✓ Embedded {len(tickers)} tickers into index.html')
 # ── 3. Top USDT pairs by 24h volume ─────────────────────────────────────────
 usdt = [t for t in tickers if t['instId'].endswith('-USDT')]
 usdt.sort(key=lambda t: float(t.get('volCcy24h') or 0), reverse=True)
-top_pairs = [t['instId'] for t in usdt[:TOP_N]]
-print(f'  Top {TOP_N}: {", ".join(top_pairs[:5])} …')
+top_pairs = [t['instId'] for t in usdt[RANK_START:RANK_START + TOP_N]]
+print(f'  Ranks {RANK_START+1}-{RANK_START+TOP_N}: {", ".join(top_pairs[:5])} …')
 
 # ── 3b. Inject noscript AI-readable summary ───────────────────────────────────
 import datetime as _dt
@@ -87,12 +88,12 @@ lines = [
     '  All data: https://solihunas.github.io/okx/data/candles/all.json',
     '  Index   : https://solihunas.github.io/okx/data/index.json',
     '',
-    f'Top {TOP_N} USDT pairs by 24h volume:',
+    f'Ranks {RANK_START+1}-{RANK_START+TOP_N} USDT pairs by 24h volume (showing first 30):',
     f'{"Pair":<18} {"Price":>14} {"24h%":>8} {"Vol24h(USDT)":>20}',
     '-' * 64,
 ]
 usdt_map = {t['instId']: t for t in usdt}
-for inst in top_pairs:
+for inst in top_pairs[:30]:
     t = usdt_map[inst]
     try:
         price  = float(t['last'])
@@ -132,7 +133,8 @@ for inst in top_pairs:
             if raw['code'] != '0' or not raw.get('data'):
                 continue
             candles = [
-                {'t': int(c[0]), 'o': c[1], 'h': c[2], 'l': c[3], 'c': c[4], 'v': c[5]}
+                {'t': int(c[0]), 'o': c[1], 'h': c[2], 'l': c[3], 'c': c[4],
+                 'v': c[5], 'vc': c[6] if len(c) > 6 else '0'}
                 for c in reversed(raw['data'])
             ]
             fname = f'{inst}-{bar}.json'
