@@ -83,10 +83,11 @@ lines = [
     f'OKX Spot Market — Static Snapshot  (updated: {ts_str})',
     '',
     'Data endpoints (no JavaScript needed):',
-    '  Tickers : https://solihunas.github.io/okx/data/tickers.json',
-    '  Candles : https://solihunas.github.io/okx/data/candles/{{instId}}-{{bar}}.json',
-    '  All data: https://solihunas.github.io/okx/data/candles/all.json',
-    '  Index   : https://solihunas.github.io/okx/data/index.json',
+    '  Tickers    : https://solihunas.github.io/okx/data/tickers.json',
+    '  H4  OHLCV  : https://solihunas.github.io/okx/data/h4.json   ← 200 pairs × 200 candles H4',
+    '  M15 OHLCV  : https://solihunas.github.io/okx/data/m15.json  ← 200 pairs × 200 candles M15',
+    '  Candles    : https://solihunas.github.io/okx/data/candles/{{instId}}-{{bar}}.json',
+    '  Index      : https://solihunas.github.io/okx/data/index.json',
     '',
     f'Ranks {RANK_START+1}-{RANK_START+TOP_N} USDT pairs by 24h volume (showing first 30):',
     f'{"Pair":<18} {"Price":>14} {"24h%":>8} {"Vol24h(USDT)":>20}',
@@ -180,4 +181,35 @@ aggregate = {
 with open('data/candles/all.json', 'w') as f:
     json.dump(aggregate, f)
 print(f'  ✓ all.json: {len(all_candles)} keys written.')
+
+# ── 7. H4 and M15 aggregate files (AI-readable, compact array format) ─────────
+print('Building data/h4.json and data/m15.json…')
+for tf_label, tf_fname in [('4H', 'h4'), ('15m', 'm15')]:
+    pairs_data = {}
+    for inst in top_pairs:
+        fpath = f'data/candles/{inst}-{tf_label}.json'
+        if os.path.exists(fpath):
+            with open(fpath) as f:
+                candles = json.load(f)
+            # Compact array: [ts_ms, open, high, low, close, vol_base, vol_usdt]
+            # Take last 200 candles (most recent), oldest-first order
+            pairs_data[inst] = [
+                [c['t'], c['o'], c['h'], c['l'], c['c'], c['v'], c.get('vc', '0')]
+                for c in candles[-200:]
+            ]
+    out = {
+        'generated':  int(time.time() * 1000),
+        'timeframe':  tf_label,
+        'candles':    200,
+        'pairs_count': len(pairs_data),
+        'fields':     ['timestamp_ms', 'open', 'high', 'low', 'close', 'volume_base', 'volume_usdt'],
+        'note':       f'OKX spot {tf_label} OHLCV. 200 pairs ranked 11-210 by USDT volume. Updated every 15 min.',
+        'pairs':      pairs_data,
+    }
+    outfile = f'data/{tf_fname}.json'
+    with open(outfile, 'w') as f:
+        json.dump(out, f, separators=(',', ':'))
+    size_kb = os.path.getsize(outfile) // 1024
+    print(f'  ✓ {outfile}: {len(pairs_data)} pairs × 200 candles ({size_kb} KB)')
+
 print('Done.')
