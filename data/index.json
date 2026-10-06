@@ -1,5 +1,5 @@
 {
-  "updated": 1791271919393,
+  "updated": 1791296960055,
   "note": "Static JSON updated every 15 min by GitHub Actions. No JavaScript needed.",
   "endpoints": {
     "tickers": "https://solihunas.github.io/okx/data/tickers.json",
@@ -7,14 +7,14 @@
     "index": "https://solihunas.github.io/okx/data/index.json"
   },
   "available_candles": {
-    "SUI-USDT": [
+    "FIL-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "FIL-USDT": [
+    "SUI-USDT": [
       "5m",
       "15m",
       "1H",
@@ -42,14 +42,7 @@
       "4H",
       "1D"
     ],
-    "XDP-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "USDG-USDT": [
+    "ADA-USDT": [
       "5m",
       "15m",
       "1H",
@@ -63,63 +56,7 @@
       "4H",
       "1D"
     ],
-    "ADA-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "PEPE-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "ENA-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
     "XAUT-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "PUMP-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "AAVE-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "STRK-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "XLM-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "BNB-USDT": [
       "5m",
       "15m",
       "1H",
@@ -133,14 +70,7 @@
       "4H",
       "1D"
     ],
-    "ONDO-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "TRUMP-USDT": [
+    "PEPE-USDT": [
       "5m",
       "15m",
       "1H",
@@ -154,56 +84,56 @@
       "4H",
       "1D"
     ],
-    "RLUSD-USDT": [
+    "PUMP-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "LTC-USDT": [
+    "TRUMP-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "ARB-USDT": [
+    "XLM-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "NIGHT-USDT": [
+    "AAVE-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "MON-USDT": [
+    "ONDO-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "FET-USDT": [
+    "BNB-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "ZRO-USDT": [
+    "ENA-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "DOT-USDT": [
+    "STRK-USDT": [
       "5m",
       "15m",
       "1H",
@@ -217,35 +147,28 @@
       "4H",
       "1D"
     ],
-    "TRX-USDT": [
+    "MON-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "XSPCX-USDT": [
+    "ARB-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "LINK-USDT": [
+    "LTC-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "PENGU-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "BCH-USDT": [
+    "DOT-USDT": [
       "5m",
       "15m",
       "1H",
@@ -259,14 +182,56 @@
       "4H",
       "1D"
     ],
-    "ICP-USDT": [
+    "XSPCX-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "TAO-USDT": [
+    "USDG-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "NIGHT-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "API3-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "LINK-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "BCH-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "ZRO-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "TRX-USDT": [
       "5m",
       "15m",
       "1H",
@@ -280,7 +245,28 @@
       "4H",
       "1D"
     ],
-    "XPL-USDT": [
+    "SENT-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "ETHFI-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "FET-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "PENGU-USDT": [
       "5m",
       "15m",
       "1H",
@@ -294,21 +280,28 @@
       "4H",
       "1D"
     ],
+    "TAO-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "RENDER-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "ICP-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
     "SAND-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "SENT-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "OP-USDT": [
       "5m",
       "15m",
       "1H",
@@ -322,21 +315,7 @@
       "4H",
       "1D"
     ],
-    "APT-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "XXIAOMI-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "SHIB-USDT": [
+    "XPL-USDT": [
       "5m",
       "15m",
       "1H",
@@ -357,21 +336,21 @@
       "4H",
       "1D"
     ],
-    "API3-USDT": [
+    "OP-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "RENDER-USDT": [
+    "APT-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "XSOXL-USDT": [
+    "XXIAOMI-USDT": [
       "5m",
       "15m",
       "1H",
@@ -385,63 +364,21 @@
       "4H",
       "1D"
     ],
-    "ETHFI-USDT": [
+    "SHIB-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "POL-USDT": [
+    "TRB-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "SKY-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "DASH-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "ETC-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "2Z-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "XTSLA-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "WIF-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "DATA-USDT": [
+    "NMR-USDT": [
       "5m",
       "15m",
       "1H",
@@ -455,49 +392,14 @@
       "4H",
       "1D"
     ],
-    "AEON-USDT": [
+    "DATA-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "JTO-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "STX-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "VIRTUAL-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "SEI-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "ATOM-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "XINTC-USDT": [
+    "XSOXL-USDT": [
       "5m",
       "15m",
       "1H",
@@ -511,49 +413,7 @@
       "4H",
       "1D"
     ],
-    "BONK-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "FLUID-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "CRV-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "ASTER-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "PI-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "XGOOGL-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "UMA-USDT": [
+    "DASH-USDT": [
       "5m",
       "15m",
       "1H",
@@ -574,7 +434,63 @@
       "4H",
       "1D"
     ],
-    "AXS-USDT": [
+    "POL-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "AEON-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "ETC-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "2Z-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "ATOM-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "JTO-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "ASTER-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "STX-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "SKY-USDT": [
       "5m",
       "15m",
       "1H",
@@ -588,7 +504,28 @@
       "4H",
       "1D"
     ],
-    "JUP-USDT": [
+    "XGOOGL-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "VIRTUAL-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "CRV-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "SEI-USDT": [
       "5m",
       "15m",
       "1H",
@@ -602,28 +539,35 @@
       "4H",
       "1D"
     ],
-    "MEGA-USDT": [
+    "WIF-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "CARDS-USDT": [
+    "JUP-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "CRO-USDT": [
+    "BONK-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "MANA-USDT": [
+    "XDP-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "UMA-USDT": [
       "5m",
       "15m",
       "1H",
@@ -637,434 +581,35 @@
       "4H",
       "1D"
     ],
-    "XNVDA-USDT": [
+    "PI-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "MORPHO-USDT": [
+    "FLUID-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "APE-USDT": [
+    "XINTC-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "ALGO-USDT": [
+    "MANA-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "EIGEN-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "AR-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "VVV-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "XQQQ-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "S-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "PENDLE-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "ZAMA-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "DYDX-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "SCR-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "PAXG-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "TRB-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "A-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "GRVT-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "CC-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "CP-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "ZK-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "XMU-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "BICO-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "ATH-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "RVN-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "EDGE-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "AVNT-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "CFX-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "BIO-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "PARTI-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "PROS-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "XSPY-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "CORE-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "ONE-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "PHA-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "XMRVL-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "KAIA-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "PYTH-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "PEOPLE-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "ENS-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "SLX-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "XCBRS-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "FOGO-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "BOME-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "RE-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "XQCOM-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "W-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "KAITO-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "XMETA-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "IOTA-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "MAGIC-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "FLOKI-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "LAT-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "KMNO-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "KITE-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "CELO-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "HUMA-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "XAMZN-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "GALA-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "CHZ-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "XWDC-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "BRL1-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "XAMD-USDT": [
+    "AXS-USDT": [
       "5m",
       "15m",
       "1H",
@@ -1078,154 +623,119 @@
       "4H",
       "1D"
     ],
-    "SPK-USDT": [
+    "XMRVL-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "XNBIS-USDT": [
+    "CARDS-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "XAVGO-USDT": [
+    "ZAMA-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "RESOLV-USDT": [
+    "MORPHO-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "ALLO-USDT": [
+    "VVV-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "ZEN-USDT": [
+    "AR-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "XCOIN-USDT": [
+    "CRO-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "BERA-USDT": [
+    "XMETA-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "COMP-USDT": [
+    "ZK-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "XIREN-USDT": [
+    "XNVDA-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "CFG-USDT": [
+    "ALGO-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "BETH-USDT": [
+    "CC-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "XHOOD-USDT": [
+    "A-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "XORCL-USDT": [
+    "EIGEN-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "ZBCN-USDT": [
+    "XTSLA-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "XTZ-USDT": [
+    "CP-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "MOODENG-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "MERL-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "BAT-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "BASED-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "LSK-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "YGG-USDT": [
+    "MEGA-USDT": [
       "5m",
       "15m",
       "1H",
@@ -1239,14 +749,399 @@
       "4H",
       "1D"
     ],
-    "XRKLB-USDT": [
+    "BASED-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "RSR-USDT": [
+    "S-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "GRVT-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "BIO-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "CORE-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "RLUSD-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "DYDX-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "APE-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "PAXG-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "XMU-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "W-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "MAGIC-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "PHA-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "XAMD-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "BICO-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "PEOPLE-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "HUMA-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "SLX-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "ATH-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "CFX-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "DOS-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "XSPY-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "ONE-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "AVNT-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "BOME-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "PYTH-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "XWDC-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "PARTI-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "IOTA-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "XAMZN-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "CHZ-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "ENS-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "EDGE-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "KAIA-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "PROS-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "PENDLE-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "LAT-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "KAITO-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "XCBRS-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "KITE-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "XQQQ-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "XAVGO-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "RVN-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "RESOLV-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "KMNO-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "XQCOM-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "XNBIS-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "BETH-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "GALA-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "FOGO-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "FLOKI-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "CFG-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "ZEN-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "MOODENG-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "SPK-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "AI-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "LSK-USDT": [
       "5m",
       "15m",
       "1H",
@@ -1260,91 +1155,70 @@
       "4H",
       "1D"
     ],
-    "SSV-USDT": [
+    "RE-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "ONT-USDT": [
+    "XIREN-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "XAAPL-USDT": [
+    "ALLO-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "YFI-USDT": [
+    "BRL1-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "XLITE-USDT": [
+    "SCR-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "VELO-USDT": [
+    "BERA-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "PROMPT-USDT": [
+    "MERL-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "PNUT-USDT": [
+    "COMP-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "SKL-USDT": [
+    "CELO-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "BIGTIME-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "SAFE-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "ENJ-USDT": [
-      "5m",
-      "15m",
-      "1H",
-      "4H",
-      "1D"
-    ],
-    "XSHAZ-USDT": [
+    "RSR-USDT": [
       "5m",
       "15m",
       "1H",
@@ -1358,35 +1232,84 @@
       "4H",
       "1D"
     ],
-    "LRC-USDT": [
+    "BAND-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "PROVE-USDT": [
+    "VELO-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "MEW-USDT": [
+    "XRKLB-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "OL-USDT": [
+    "BAT-USDT": [
       "5m",
       "15m",
       "1H",
       "4H",
       "1D"
     ],
-    "ACT-USDT": [
+    "OFC-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "ONT-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "XCOIN-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "YGG-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "SAFE-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "XAAPL-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "SKL-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "PROMPT-USDT": [
       "5m",
       "15m",
       "1H",
@@ -1400,7 +1323,84 @@
       "4H",
       "1D"
     ],
-    "XTSM-USDT": [
+    "ZBCN-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "KAT-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "XMVLL-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "PNUT-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "XORCL-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "NES-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "XLITE-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "DOOD-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "OL-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "MEW-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "XTZ-USDT": [
+      "5m",
+      "15m",
+      "1H",
+      "4H",
+      "1D"
+    ],
+    "XSHAZ-USDT": [
       "5m",
       "15m",
       "1H",
